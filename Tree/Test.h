@@ -16,11 +16,11 @@ struct Test
 		else std::cout << "FAIL\n";
 	}
 	template< template <class> class TestType, class  A >
-		static void Run(const A& arg)
+	static void Run(const A& arg)
 	{
-			std::cout << "Test " << typeid(TestType<T>()).name() << " : ";
-			if (TestType<T>()(arg)) std::cout << "OK\n";
-			else std::cout << "FAIL\n";
+		std::cout << "Test " << typeid(TestType<T>()).name() << " : ";
+		if (TestType<T>()(arg)) std::cout << "OK\n";
+		else std::cout << "FAIL\n";
 	}
 };
 

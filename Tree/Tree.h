@@ -364,7 +364,7 @@ std::ostream& operator<< (std::ostream& os, const Tree<T>& tree)
 #if __cplusplus >= 201103L || defined(_MSC_VER) && _MSC_VER >= 1800
 	bool next_flag = false;
 	std::for_each(tree.begin(), tree.end(),
-		[&os, &next_flag](typename Tree<T>::iterator t){ if (next_flag) os << ' '; os << t->value; next_flag = true; });
+		[&os, &next_flag](typename Tree<T>::iterator t) { if (next_flag) os << ' '; os << t->value; next_flag = true; });
 #else
 	os << "This is just a tree with " << tree.size() << " leaves.\n";
 #endif
@@ -414,12 +414,12 @@ Tree<T>::Tree(const T &root_value) : sz(1), _root(new Node(root_value, nullptr, 
 template <class T>
 typename Tree<T>::Node* Tree<T>::copy(const Node* const oryg, Node* parent)
 {
-//#ifndef NDEBUG
-//	if (oryg)
-//		std::cerr << "Copying..\n";
-//	else
-//		std::cerr << "got null.";
-//#endif
+	//#ifndef NDEBUG
+	//	if (oryg)
+	//		std::cerr << "Copying..\n";
+	//	else
+	//		std::cerr << "got null.";
+	//#endif
 	if (!oryg)	return nullptr;
 	Node* temp_copy = new Tree<T>::Node(oryg->value, parent); /// the new node. Children and right sibling are null.
 
@@ -450,7 +450,7 @@ Tree<T>::~Tree()
 }
 template <class T>
 Tree<T>::Node::Node(const T &_value, typename Tree<T>::Node * _parent, typename Tree<T>::Node *_leftmost_child, typename Tree<T>::Node *_right_sibling)
-: value(_value), parent(_parent), leftmost_child(_leftmost_child), right_sibling(_right_sibling)
+	: value(_value), parent(_parent), leftmost_child(_leftmost_child), right_sibling(_right_sibling)
 {
 
 }
